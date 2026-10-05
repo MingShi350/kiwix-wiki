@@ -1,6 +1,6 @@
 {
   "name": "dsh-kiwix-wiki",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "type": "module",
   "description": "Offline Wikipedia database query tools backed by the local Kiwix ZIM library",
   "license": "MIT",

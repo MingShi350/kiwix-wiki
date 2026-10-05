@@ -1,4 +1,4 @@
-**中文** | [English](README.en.md)
+**中文** | [English](https://github.com/MingShi350/kiwix-wiki/blob/main/README.en.md)
 
 # kiwix-wiki — 离线维基百科数据库查询插件
 
@@ -39,11 +39,16 @@
 2. ZIM 数据文件 —— 从官方库 <https://download.kiwix.org/zim/> 或 <https://library.kiwix.org> 下载，
    放进 kiwix-serve 的服务目录。
 
-装进 DSH（本仓库位于 `/path/to/kiwix-wiki`）：
+装进 DSH（包名 `dsh-kiwix-wiki`，两种来源任选）：
 
 ```bash
+# 方式一：从 npm 安装（最省事）
+dsh plugin --profile web add dsh-kiwix-wiki
+
+# 方式二：从本地目录安装（源码 / 克隆下来的仓库，本仓库位于 /path/to/kiwix-wiki）
 dsh plugin --profile web add /path/to/kiwix-wiki
-# 或手工在 profile 的 package.json 里加一行："dsh-kiwix-wiki": "link:/path/to/kiwix-wiki"
+# 也可手工在 profile 的 package.json 里加一行："dsh-kiwix-wiki": "link:/path/to/kiwix-wiki"
+
 dsh web        # Host 插件改完必须重启才生效
 ```
 

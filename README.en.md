@@ -1,4 +1,4 @@
-**English** | [中文](README.md)
+**English** | [中文](https://github.com/MingShi350/kiwix-wiki/blob/main/README.md)
 
 # kiwix-wiki — offline Wikipedia database query plugin
 
@@ -48,11 +48,16 @@ This plugin **contains no data**; you provide two things yourself:
 2. ZIM data files — download them from the official library <https://download.kiwix.org/zim/> or
    <https://library.kiwix.org>, and put them in kiwix-serve's serving directory.
 
-Install into DSH (this repository lives at `/path/to/kiwix-wiki`):
+Install into DSH (the package is `dsh-kiwix-wiki`; pick either source):
 
 ```bash
+# Option 1: from npm (simplest)
+dsh plugin --profile web add dsh-kiwix-wiki
+
+# Option 2: from a local directory (source checkout; this repository lives at /path/to/kiwix-wiki)
 dsh plugin --profile web add /path/to/kiwix-wiki
 # or add one line by hand in the profile's package.json: "dsh-kiwix-wiki": "link:/path/to/kiwix-wiki"
+
 dsh web        # Host plugins only take effect after a restart
 ```
 

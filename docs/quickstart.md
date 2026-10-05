@@ -192,13 +192,19 @@ curl -s "http://127.0.0.1:8090/catalog/v2/entries?count=-1" | grep -oE '<name>[^
 
 假设本仓库位于 `/path/to/kiwix-wiki`。
 
-**方式 A（推荐）：走 DSH 的 pnpm 通道**
+**方式 A（最省事）：从 npm 安装**
+
+```bash
+dsh plugin --profile web add dsh-kiwix-wiki
+```
+
+**方式 B（推荐给要改代码的人）：从本地目录安装**
 
 ```bash
 dsh plugin --profile web add /path/to/kiwix-wiki
 ```
 
-**方式 B：手写进 profile 的 `package.json`**
+**方式 C：手写进 profile 的 `package.json`**
 
 在 `$DSH_HOME/profiles/web/package.json` 的 `dependencies` 里加一行（`link:` 指本地目录）：
 
