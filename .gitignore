@@ -17,3 +17,4 @@ cordis.yml
 *.bak
 *.bak-*
 .DS_Store
+*.tgz
