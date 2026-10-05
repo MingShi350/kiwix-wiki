@@ -255,7 +255,7 @@ Host 插件是被常驻加载的 JS 模块——只改文件不重启，工具�
 ```yaml
 - id: kiwix-wiki
   config:
-    baseUrl: http://192.168.31.12:8090      # 例：kiwix-serve 跑在局域网另一台机器上
+    baseUrl: http://192.168.1.10:8090      # 例：kiwix-serve 跑在局域网另一台机器上
     defaultBook: zh                         # 别名自动跟随最新版；也可写精确文件名
     timeoutMs: 15000
     maxTextChars: 24000
@@ -337,7 +337,7 @@ dsh --profile web --patch ./kiwix-wiki.patch.yml --dump-config
 
 - kiwix-serve **没有认证、没有 HTTPS**，并且响应头带 `Access-Control-Allow-Origin: *`。
   默认写法只用 `-p 127.0.0.1:8090:8080`，只对本机开放，就是出于这个原因。
-- 要给局域网其他机器共用，建议显式绑内网网卡而不是全网卡，例如 `-p 192.168.31.12:8090:8080`，
+- 要给局域网其他机器共用，建议显式绑内网网卡而不是全网卡，例如 `-p 192.168.1.10:8090:8080`，
   并确认路由器上没有把该端口转发到公网。真要长期对外提供，请在前面加一层带认证的反向代理。
 - 查询内容会出现在 kiwix-serve 的访问日志里；插件侧不做任何遥测，也不访问外网。
 - ZIM 是只读数据，容器用只读挂载（`:ro`）即可；用 `DOWNLOAD` 自动下载时才需要可写。

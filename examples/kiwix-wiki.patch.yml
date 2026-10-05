@@ -10,7 +10,7 @@
 - id: kiwix-wiki
   config:
     # kiwix-serve 地址。本机默认；换成局域网/远端机器即可，例如：
-    #   baseUrl: http://192.168.31.12:8090
+    #   baseUrl: http://192.168.1.10:8090
     baseUrl: http://127.0.0.1:8090
     # 工具调用省略 book 时使用的书库。推荐别名（zh/en/medicine/simple）或去掉日期的
     # 系列名（wikipedia_zh_all_maxi）：自动选该系列最新 dump，ZIM 换版后无需改配置。

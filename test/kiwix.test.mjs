@@ -63,8 +63,8 @@ test("parseCatalogXml takes the ZIM name from the text/html acquisition link", (
 <id>urn:uuid:11111111-1111-1111-1111-111111111111</id>
 <title>维基百科</title><name>wikipedia_zh_all</name><language>zho</language>
 <articleCount>2891589</articleCount><tags>_ftindex:yes;maxi</tags>
-<link rel="http://opds-spec.org/acquisition/open-access" type="application/x-zim" href="http://192.168.31.12:8090/catalog/v2/entry/11111111"/>
-<link rel="http://opds-spec.org/acquisition/open-access" type="text/html" href="http://192.168.31.12:8090/content/wikipedia_zh_all_maxi_2025-09/"/>
+<link rel="http://opds-spec.org/acquisition/open-access" type="application/x-zim" href="http://192.168.1.10:8090/catalog/v2/entry/11111111"/>
+<link rel="http://opds-spec.org/acquisition/open-access" type="text/html" href="http://192.168.1.10:8090/content/wikipedia_zh_all_maxi_2025-09/"/>
 </entry>`;
   const books = parseCatalogXml(xml);
   assert.equal(books.length, 1);
@@ -332,9 +332,9 @@ test("integration: the shipped defaultBook resolves against a live server", asyn
 });
 
 test("Config accepts any baseUrl override and rejects unknown keys", () => {
-  const remote = Config["~standard"].validate({ baseUrl: "http://192.168.31.12:8090/" });
+  const remote = Config["~standard"].validate({ baseUrl: "http://192.168.1.10:8090/" });
   assert.equal(remote.issues, undefined);
-  assert.equal(remote.value.baseUrl, "http://192.168.31.12:8090/");
+  assert.equal(remote.value.baseUrl, "http://192.168.1.10:8090/");
   const ttl = Config["~standard"].validate({ catalogTtlMs: 5000 });
   assert.equal(ttl.issues, undefined);
   assert.equal(ttl.value.catalogTtlMs, 5000);
