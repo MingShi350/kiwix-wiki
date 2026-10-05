@@ -5,6 +5,18 @@
   "type": "module",
   "description": "Offline Wikipedia database query tools backed by the local Kiwix ZIM library",
   "license": "MIT",
+  "author": "MingShi350",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MingShi350/kiwix-wiki.git"
+  },
+  "homepage": "https://github.com/MingShi350/kiwix-wiki#readme",
+  "bugs": {
+    "url": "https://github.com/MingShi350/kiwix-wiki/issues"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "keywords": [
     "dsh-plugin",
     "kiwix",
@@ -22,6 +34,9 @@
     "./locale/*.json": "./locale/*.json",
     "./icon": "./icon.svg"
   },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.2 || ^4.0.5-0"
+  },
   "files": [
     "index.js",
     "lib/*.js",
@@ -29,6 +44,7 @@
     "locale/*.json",
     "icon.svg",
     "README.md",
+    "README.en.md",
     "LICENSE",
     "docs/*.md",
     "examples/*",

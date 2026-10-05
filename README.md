@@ -1,3 +1,5 @@
+**中文** | [English](README.en.md)
+
 # kiwix-wiki — 离线维基百科数据库查询插件
 
 给 DSH 里的模型 / Agent 加一条**完全离线的百科查询通道**：`wiki_search` / `wiki_read` / `wiki_books`
