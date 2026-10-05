@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Offline Wikipedia (Kiwix)",
+    "description": "Offline Wikipedia database query tools: full-text search, exact title lookup, article reading, and book catalog against the local Kiwix ZIM library — real Wikipedia facts with no internet access."
+  }
+}

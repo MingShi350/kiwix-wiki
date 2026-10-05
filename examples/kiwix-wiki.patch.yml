@@ -1,0 +1,26 @@
+# kiwix-wiki 插件配置叠加层（DSH profile patch）。
+#
+# 用法（无需改动 profile 自身的 cordis.patch.yml）：
+#   dsh web --patch /绝对路径/examples/kiwix-wiki.patch.yml
+#
+# 这是最后一层覆盖，优先级高于插件自带的 cordis.patch.yml。
+# 建议把五个键写全：该层是整体替换这个条目的 config。
+# 检查组合结果：
+#   dsh --profile web --patch /绝对路径/examples/kiwix-wiki.patch.yml --dump-config
+- id: kiwix-wiki
+  config:
+    # kiwix-serve 地址。本机默认；换成局域网/远端机器即可，例如：
+    #   baseUrl: http://192.168.31.12:8090
+    baseUrl: http://127.0.0.1:8090
+    # 工具调用省略 book 时使用的书库。推荐别名（zh/en/medicine/simple）或去掉日期的
+    # 系列名（wikipedia_zh_all_maxi）：自动选该系列最新 dump，ZIM 换版后无需改配置。
+    # 也可以写精确的 ZIM 文件名去掉 .zim（见 wiki_books），例如
+    # wikipedia_zh_all_maxi_2026-08。
+    defaultBook: zh
+    # 单个 HTTP 请求超时（毫秒）
+    timeoutMs: 15000
+    # wiki_read 默认返回的字符上限（工具参数 maxChars 可覆盖）
+    maxTextChars: 24000
+    # 书库目录缓存时长（毫秒）。调小（如 5000）能更快看到刚加进服务目录的 ZIM；
+    # 任何一次"找不到书"的调用都会强制刷新一次目录。
+    catalogTtlMs: 60000

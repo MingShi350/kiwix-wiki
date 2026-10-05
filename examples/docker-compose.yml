@@ -1,0 +1,38 @@
+# 官方 kiwix-serve 容器 + 本机 ZIM 目录。
+#
+# 用法：
+#   1) 把 ZIM 文件放进一个目录（默认是本仓库根目录下的 zim/）
+#   2) docker compose -f examples/docker-compose.yml up -d
+#   3) curl http://127.0.0.1:8090/catalog/v2/entries?count=-1
+#
+# 想放到别处就先导出变量：
+#   KIWIX_ZIM_DIR=$HOME/kiwix-zim docker compose -f examples/docker-compose.yml up -d
+#
+# 镜像来源：https://ghcr.io/kiwix/kiwix-serve
+# 构建自官方仓库 kiwix/kiwix-tools 的 docker/server/（EXPOSE 8080、WORKDIR /data、
+# 以 uid 1001 非 root 运行、入口脚本 start.sh 里执行 kiwix-serve --port=$PORT "$@"）。
+services:
+  kiwix-serve:
+    image: ghcr.io/kiwix/kiwix-serve:3.8.2   # 固定版本，避免 latest 漂移
+    container_name: kiwix-serve
+    restart: unless-stopped
+    ports:
+      # 只绑回环地址：这个服务没有认证、没有 HTTPS，别暴露到公网。
+      # 要给局域网其他机器用，改成 "192.168.31.12:8090:8080" 之类并自行评估风险。
+      - "127.0.0.1:8090:8080"
+    volumes:
+      # 只读挂载。ZIM 目录默认取仓库根下的 zim/，可用 KIWIX_ZIM_DIR 覆盖。
+      # 注意：容器以 uid 1001 运行，ZIM 文件必须"其他人可读"（-rw-r--r--，即 chmod 644）。
+      # 若文件是 root:root 的 600/711，该书会直接从书库列表里消失（不报错），其他书照常。
+      - ${KIWIX_ZIM_DIR:-../zim}:/data:ro
+    # 容器内 PORT 默认 8080（与 EXPOSE / 端口映射保持一致）；
+    # "$@" 是 kiwix-serve 的位置参数：给目录 = 服务该目录下所有 ZIM。
+    command: ["/data"]
+    # environment:
+    #   PORT: "8080"
+    #   # 首次启动时自动下载一个 ZIM（需要 /data 可写，见下）：
+    #   DOWNLOAD: https://download.kiwix.org/zim/wikipedia/wikipedia_zh_all_mini_2026-07b.zim
+    #
+    # 用 DOWNLOAD 时目录必须可写：容器以 uid 1001 运行，
+    #   sudo chown 1001:1001 "$KIWIX_ZIM_DIR"     # 或 chmod 777
+    # 并把上面的挂载去掉 :ro。只读挂载 + 自己拷文件进去是更省事、更安全的做法。

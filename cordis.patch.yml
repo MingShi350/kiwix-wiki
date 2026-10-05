@@ -1,0 +1,4 @@
+- insert:
+    - id: kiwix-wiki
+      name: '@local/kiwix-wiki'
+      config: {}

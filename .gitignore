@@ -1,0 +1,19 @@
+# 依赖与构建产物
+node_modules/
+package-lock.json
+
+# 数据文件（ZIM 由使用者自行下载，绝不入库）
+*.zim
+*.zim.bak
+*.zim.sha256
+
+# DSH 运行时生成
+cordis.yml
+*.dump.yml
+
+# 日志与临时文件
+*.log
+*.tmp
+*.bak
+*.bak-*
+.DS_Store
