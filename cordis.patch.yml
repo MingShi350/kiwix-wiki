@@ -1,4 +1,4 @@
 - insert:
     - id: kiwix-wiki
-      name: '@local/kiwix-wiki'
+      name: 'dsh-kiwix-wiki'
       config: {}

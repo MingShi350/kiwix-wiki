@@ -43,7 +43,7 @@
 
 ```bash
 dsh plugin --profile web add /path/to/kiwix-wiki
-# 或手工在 profile 的 package.json 里加一行："@local/kiwix-wiki": "link:/path/to/kiwix-wiki"
+# 或手工在 profile 的 package.json 里加一行："dsh-kiwix-wiki": "link:/path/to/kiwix-wiki"
 dsh web        # Host 插件改完必须重启才生效
 ```
 

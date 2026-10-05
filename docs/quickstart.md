@@ -203,7 +203,7 @@ dsh plugin --profile web add /path/to/kiwix-wiki
 在 `$DSH_HOME/profiles/web/package.json` 的 `dependencies` 里加一行（`link:` 指本地目录）：
 
 ```json
-"@local/kiwix-wiki": "link:/path/to/kiwix-wiki"
+"dsh-kiwix-wiki": "link:/path/to/kiwix-wiki"
 ```
 
 然后在同目录执行 `pnpm install`（或让 DSH 启动时自行安装）。
@@ -347,7 +347,7 @@ dsh --profile web --patch ./kiwix-wiki.patch.yml --dump-config
 ## 9. 卸载
 
 ```bash
-dsh plugin --profile web remove @local/kiwix-wiki   # 或删掉 profile package.json 里的那一行
+dsh plugin --profile web remove dsh-kiwix-wiki   # 或删掉 profile package.json 里的那一行
 docker rm -f kiwix-serve
 rm -rf "$HOME/kiwix-zim"                            # 确认不再需要这些 ZIM 再删
 ```

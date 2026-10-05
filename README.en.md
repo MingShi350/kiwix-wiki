@@ -52,7 +52,7 @@ Install into DSH (this repository lives at `/path/to/kiwix-wiki`):
 
 ```bash
 dsh plugin --profile web add /path/to/kiwix-wiki
-# or add one line by hand in the profile's package.json: "@local/kiwix-wiki": "link:/path/to/kiwix-wiki"
+# or add one line by hand in the profile's package.json: "dsh-kiwix-wiki": "link:/path/to/kiwix-wiki"
 dsh web        # Host plugins only take effect after a restart
 ```
 
